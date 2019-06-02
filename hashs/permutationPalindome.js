@@ -1,3 +1,18 @@
+
+// 1 iteration
+function hasPalindromePermutation(str) {
+    const set = new Set();
+    for (let char of str) {
+        if (set.has(char)) {
+            set.delete(char);
+        } else {
+            set.add(char)
+        }
+    }
+    return set.size <= 1;
+}
+
+// 2 iterations
 function hasPalindromePermutation(str) {
     const obj = getCharFreq(str);
     let oddCheck = false;
