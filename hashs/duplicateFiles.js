@@ -14,7 +14,7 @@ function myFunction(arg) {
                 stack.push(`/${ele}/${dir}`);
             }
         } else {
-            const content = fs.readContent(ele);
+            const content = sampleHashing(path);
             if (content in obj) {
                 if (obj[content].time < statEle.mTime) {
                     dups.push([obj[content].path, ele]);
