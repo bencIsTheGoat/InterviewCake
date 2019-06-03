@@ -11,3 +11,17 @@ function getMaxProfit(prices) {
     }
     return maxProfit;
 }
+
+function getMaxProfit(stockPrices) {
+    if (stockPrices.length < 2) {
+        throw new Error('Nah fool')
+    }
+    let totalProfit = -Infinity;
+    let runProfit = 0;
+    for (let i = 0; i < stockPrices.length - 1; i++) {
+        runProfit += stockPrices[i + 1] - stockPrices[i];
+        if (runProfit > totalProfit) totalProfit = runProfit;
+        if (runProfit < 0) runProfit = 0;
+    }
+    return totalProfit;
+}
