@@ -1,3 +1,4 @@
+// correct O(N) iterative solution
 function isBalanced(root) {
     if (!root) return true;
     const stack = [[root, 0]];
