@@ -1,5 +1,6 @@
-function isBinarySearchTree(treeRoot) {
 
+// iterative solution
+function isBinarySearchTree(treeRoot) {
     if (!treeRoot) return true;
     const stack = [[treeRoot, Infinity, -Infinity]];
     while (stack.length > 0) {
