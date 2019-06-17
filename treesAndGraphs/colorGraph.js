@@ -1,3 +1,27 @@
+class GraphNode {
+    constructor(label) {
+        this.label = label;
+        this.neighbors = new Set();
+        this.color = null;
+    }
+}
+
+function colorGraph(graph, colors) {
+    for (const node of graph) {
+        const illegalColors = new Set();
+        for (const child of node.neighbors) {
+            if (child.color) illegalColors.add(child.color);
+            if (child === node) throw new Error('loop graph')
+        }
+        for (const color of colors) {
+            if (!illegalColors.has(color)) {
+                node.color = color;
+                break;
+            }
+        }
+    }
+}
+
 function colorGraph(graph, colors) {
 
     const visited = new Set();
