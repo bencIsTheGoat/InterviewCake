@@ -1,11 +1,11 @@
 function getPermutations(string) {
-    if (string.length <= 1) return new Set([string]);
+    if (string.length <= 1) return [string];
 
     const first = string[0];
     const rest = string.slice(1);
 
     const restPerms = getPermutations(rest);
-    const perms = new Set();
+    const perms = []
 
     restPerms.forEach(subWord => {
 
@@ -13,8 +13,10 @@ function getPermutations(string) {
             const firstHalf = subWord.slice(0, i);
             const lastHalf = subWord.slice(i);
             const newWord = firstHalf + first + lastHalf;
-            perms.add(newWord);
+            perms.push(newWord);
         }
     })
     return perms
 }
+
+console.log(getPermutations('ab'))
