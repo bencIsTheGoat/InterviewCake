@@ -1,4 +1,18 @@
 function changePossibilities(amount, arr) {
+    const amountArr = new Array(amount + 1).fill(0);
+    if (amount === 0 && arr.length > 0) return 1
+    for (const coin of arr) {
+        if (coin > amount) continue;
+        amountArr[coin] += 1;
+        for (let i = coin; i < amountArr.length; i++) {
+            const diff = i - coin;
+            amountArr[i] += amountArr[diff];
+        }
+    }
+    return amountArr[amountArr.length - 1]
+}
+
+function changePossibilities(amount, arr) {
     if (String(amount) in memo) return memo[amount];
     if (amount === 0) {
         return 1;
